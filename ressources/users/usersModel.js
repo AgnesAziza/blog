@@ -1,39 +1,43 @@
 import passportLocalMongoose from "passport-local-mongoose";
 
-module.exports = (mongoose) => {
-  "use strict";
+module.exports = mongoose => {
+    "use strict";
 
-  const Schema = mongoose.Schema;
+    const Schema = mongoose.Schema;
 
-  const UserSchema = Schema({
-    nom : {
-      required: true,
-      type: String,
-    },
+    const UserSchema = Schema({
+        nom: {
+            required: true,
+            type: String
+        },
 
-    prenom : {
-      required: true,
-      type: String,
-    },
+        prenom: {
+            required: true,
+            type: String
+        },
 
-    email : {
-      required: true,
-      type: String,
-      unique: true
-    },
+        email: {
+            required: true,
+            type: String,
+            unique: true
+        },
 
-    group : {
-      required: true,
-      type: String,
-    }
-  });
+        avatar: {
+            type: String
+        },
 
-  UserSchema.plugin(passportLocalMongoose, {
-    usernameQueryFields: ["email"], //Dit quel champ est utilisé pour s'authentifier
-    limitAttempts: true,
-    maxAttempts: 5,
-    usernameUnique: true
-  });
+        group: {
+            required: true,
+            type: String
+        }
+    });
 
-  return mongoose.model("User", UserSchema);
-}
+    UserSchema.plugin(passportLocalMongoose, {
+        usernameQueryFields: ["email"], //Dit quel champ est utilisé pour s'authentifier
+        limitAttempts: true,
+        maxAttempts: 5,
+        usernameUnique: true
+    });
+
+    return mongoose.model("User", UserSchema);
+};
