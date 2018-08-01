@@ -8,7 +8,7 @@ import UsersIndex from "./route/users/UsersIndex";
 
 import usersService from "./services/usersService";
 import postArticle from "./route/Articles/postArticle";
-import putArticlesbyid  from "./route/Articles/putArticlesbyid";
+import putArticlesbyId  from "./route/Articles/putArticlesbyId";
 import getArticlesbyId  from "./route/Articles/getArticlesbyId";
 
 class App extends Component {
